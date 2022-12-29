@@ -30,11 +30,11 @@ export default function Home() {
           <div className="flex mt-11 gap-4 flex-wrap">
             <div className="p-7 bg-transparent-white rounded-2xl flex flex-col items-start gap-4 lg:w-auto w-full">
               <h4 className={`${HeadlinerFont.className} text-blue lg:text-2xl text-xl`}>Zaakvoerder Niels Boydens</h4>
-              <Link href="https://www.google.com/maps/place/Markt+38,+8920+Langemark-Poelkapelle/data=!4m2!3m1!1s0x47dcc9427e02c11b:0x135bc9335025e17e?sa=X&ved=2ahUKEwjO6rDKsJ38AhWOXaQEHcQrDyAQ8gF6BAgfEAE" target="_blank" className={`${TextFont.className} lg:text-2xl text-xl text-blue flex items-center gap-2`}>
+              <Link href="https://www.google.com/maps/place/Markt+37,+8920+Langemark-Poelkapelle/data=!4m2!3m1!1s0x47dcc9427e02c11b:0x135bc9335025e17e?sa=X&ved=2ahUKEwjO6rDKsJ38AhWOXaQEHcQrDyAQ8gF6BAgfEAE" target="_blank" className={`${TextFont.className} lg:text-2xl text-xl text-blue flex items-center gap-2`}>
                 <div className="w-[35px]">
                   <img src="/icons/map.png" alt="map" className="w-[21px]" />
                 </div>
-                Markt 38, 8920 Langemark
+                Markt 37, 8920 Langemark
               </Link>
               <Link href="mailto:info@move-langemark.be" className={`${TextFont.className} lg:text-2xl text-xl  text-blue flex items-center gap-2`}>
                 <div className="w-[35px]">
