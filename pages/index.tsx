@@ -22,7 +22,7 @@ export default function Home() {
           <h2 className={`${HeadlinerFont.className} text-blue lg:text-4xl text-xl mt-16 text-center`}>Website coming soon</h2>
           <h1 className={`${HeadlinerFont.className} text-blue lg:text-7xl text-3xl lg:mt-6 mt-3 text-center`}>Opening februari 2023</h1>
 
-          <Link href="" target="_blank" className={`${ButtonFont.className} inline-flex mt-14 items-center gap-3 text-white lg:text-xl text-base bg-gold py-5 px-8 rounded-full hover:opacity-60`}>
+          <Link href="https://altagenda.crossuite.com/MoveLangemark/l/n5r4v5z5j454t2c49474/o/540394b4t2" target="_blank" className={`${ButtonFont.className} inline-flex mt-14 items-center gap-3 text-white lg:text-xl text-base bg-gold py-5 px-8 rounded-full hover:opacity-60`}>
             <img src="/icons/calendar.png" alt="calendar" className='"w-6 max-w-[24px]' />
             Maak alvast een afspraak
           </Link>
