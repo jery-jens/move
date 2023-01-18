@@ -1,4 +1,4 @@
 export const Config = {
-    apiUrl: "http://localhost:1337/api/",
-    cmsUrl: "http://localhost:1337",
+    apiUrl: "https://move.onrender.com/api/",
+    cmsUrl: "https://move.onrender.com",
 };
