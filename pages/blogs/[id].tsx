@@ -1,6 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router"
 import { useCallback, useEffect, useState } from "react";
 import { Main } from "../../components";
 import Sections, { IContentItem } from "../../components/Layout/Sections";
@@ -131,7 +129,7 @@ export default function Blog(page: IPage) {
         getData();
     }, [getData]);
 
-    return loaded ? (
+    return page ? (
         <>
             <Head>
                 <title>MØVE | {page.blog.attributes.Title ?? ""}</title>
@@ -162,7 +160,7 @@ export default function Blog(page: IPage) {
                 }
             </Main>
         </>
-    ) : ""
+    ) : <></>
 };
 
 export const getStaticPaths = async () => {
@@ -180,7 +178,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-  export const getStaticProps = async (context:any) => {
+export const getStaticProps = async (context:any) => {
   const res = await fetch(`${Config.apiUrl}blogs/${context.params.id}?populate=deep`);
   const { data } = await res.json();
   return {
