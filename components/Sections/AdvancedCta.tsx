@@ -1,4 +1,3 @@
-import { Main } from "next/document";
 import Image from "next/image";
 import { Config } from "../../config";
 import { IDataMain } from "../../pages";

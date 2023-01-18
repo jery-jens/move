@@ -108,7 +108,7 @@ export default function BlogOverview() {
                     {
                         blogs && blogs.data.map((blog: IBlog) => {
                             return (
-                                <Link href={`/blogs/${blog.id}`} key={blog.id} className="lg:col-span-1 col-span-3 border-solid border border-blue border-opacity-10">
+                                <Link key={blog.id} className="lg:col-span-1 col-span-3 border-solid border border-blue border-opacity-10">
                                     <div className="relative w-full h-56">
                                         <Image src={`${Config.cmsUrl}${blog.attributes.Thumbnail.data.attributes.url}`} alt="Thumbnail" fill className="object-cover" />
                                     </div>
@@ -140,7 +140,7 @@ export default function BlogOverview() {
                     {
                         pages && pages?.pages.map((page: IPaginated, i:number) => {
                             return (
-                                <span onClick={() => changePage(i)} className={`${page.active ? "bg-gold text-white font-bold" : "text-blue"} lg:text-xl text-base w-8 h-8 flex justify-center items-center rounded-full font-poppins cursor-pointer`}>
+                                <span key={i} onClick={() => changePage(i)} className={`${page.active ? "bg-gold text-white font-bold" : "text-blue"} lg:text-xl text-base w-8 h-8 flex justify-center items-center rounded-full font-poppins cursor-pointer`}>
                                     {page.page}
                                 </span>
                             )
