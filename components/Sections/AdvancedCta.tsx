@@ -12,11 +12,11 @@ export interface IAdvancedCta {
 
 export default function AdvancedCta({Text, Background, Main}:IAdvancedCta) {
     return (
-        <div className="mx-auto container px-7 my-16">
-            <section className="py-20 px-7 flex flex-col items-center bg-gold-gradient w-full relative">
+        <div className="mx-auto container px-7 lg:my-16 my-8">
+            <section className="lg:py-20 py-10 lg:px-7 px-4 flex flex-col items-center bg-gold-gradient w-full relative">
                 <img src="/logos/logo-white.png" alt="Logo" className="w-36 mb-8" />
 
-                <p className="font-openSans text-white text-center max-w-lg font-light leading-[150%] text-2xl mb-12">
+                <p className="font-openSans text-white text-center max-w-lg font-light leading-[150%] lg:text-2xl text-lg mb-12">
                     {Text}
                 </p>
 

@@ -22,6 +22,9 @@ module.exports = {
       "gold-gradient": "linear-gradient(180.2deg, rgba(61, 51, 37, 0.9) 0.17%, rgba(53, 46, 35, 0.747) 99.83%)",
       "blue-gradient": "linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), linear-gradient(98.96deg, #293440 0%, rgba(41, 52, 64, 0.1) 100%)"
     },
+    boxShadow: {
+      "default": "0px 0px 25px rgba(0, 0, 0, 0.15);",
+    },
     extend: {},
   },
   plugins: [],

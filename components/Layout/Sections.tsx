@@ -2,6 +2,7 @@ import { IDataMain } from "../../pages";
 
 import AdvancedCta from "../Sections/AdvancedCta";
 import Blogs from "../Sections/Blogs";
+import ContentWithImage from "../Sections/ContentWithImage";
 import GreyContentImage from "../Sections/GreyContentImage";
 import Icons, { IIcon } from "../Sections/Icons";
 import Services from "../Sections/Services";
@@ -19,6 +20,13 @@ export interface IContentItem {
     Appointment?: boolean;
     Direction?: string;
     Image?: {
+        data: {
+            attributes: {
+                url: string;
+            }
+        }
+    };
+    Icon?: {
         data: {
             attributes: {
                 url: string;
@@ -78,6 +86,17 @@ export default function Sections({ Content, Main }:IContent) {
                             key={i}
                             Title={item.Title ?? ""}
                             Background={item.Background?.data.attributes.url ?? ""}
+                            Main={Main}
+                        />
+                    ) : item.__component == "sections.content-with-image" ? (
+                        <ContentWithImage 
+                            key={i}
+                            Title={item.Title ?? ""}
+                            Text={item.Text ?? ""}
+                            Icon={item.Icon?.data.attributes.url ?? ""}
+                            Image={item.Image?.data.attributes.url ?? ""}
+                            Appointment={item.Appointment ?? false}
+                            Direction={item.Direction ?? "Image first"}
                             Main={Main}
                         />
                     ) : ""

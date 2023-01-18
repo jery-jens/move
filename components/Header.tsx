@@ -34,10 +34,10 @@ export default function Header({logo, navigation}: IHeader) {
         <header className="absolute top-0 left-0 py-10 w-full z-50">
             <div className="container mx-auto px-7 flex items-center justify-between w-full">
                 <Link href="/">
-                    <img src={`${Config.cmsUrl}${logo}`} alt="logo" className="lg:w-36" />
+                    <img src={`${Config.cmsUrl}${logo}`} alt="logo" className="lg:w-36 w-28" />
                 </Link>
 
-                <div className="flex items-center gap-12">
+                <div className="lg:flex hidden items-center gap-12">
                     {
                         navigation && navigation.map((item: INavLink) => {
                             return !item.Color ? (

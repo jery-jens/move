@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react"
 import { Config } from "../../config";
-import Button from "../Buttons/Button";
 
 export interface IBlogs {
-    Title: string;
-};
-
-export interface IAllBlogs {
     data: Array<IBlog>;
+    meta: {
+        pagination: {
+            page: number;
+            pageCount: number;
+        }
+    }
 };
 
 export interface IBlog {
@@ -28,20 +29,41 @@ export interface IBlog {
     id: number;
 };
 
-export default function Blogs({ Title }:IBlogs) {
-    const [ blogs, setBlogs ] = useState<IAllBlogs>();
+export interface IPagination {
+    pages: Array<IPaginated>;
+};
+
+export interface IPaginated {
+    page: number;
+    active: boolean;
+}
+
+export default function BlogOverview() {
+    const [ blogs, setBlogs ] = useState<IBlogs>();
+    const [ pages, setPages ] = useState<IPagination>();
 
     const getData = useCallback(async() => {
         try {
-            await fetch(`${Config.apiUrl}blogs?sort[0]=publishedAt&pagination[page]=1&pagination[pageSize]=3&populate=deep`, {
+            await fetch(`${Config.apiUrl}blogs?sort[0]=publishedAt&pagination[page]=1&pagination[pageSize]=12&populate=deep`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
             .then(async (res) => {
-                const data: IAllBlogs = await res.json();
+                const data: IBlogs = await res.json();
                 setBlogs(data);
+                
+                const paginatedPages = [];
+
+                for (let i = 0; i < data.meta.pagination.pageCount; i++) {
+                  paginatedPages.push({
+                    page: i+1,
+                    active: i == 0 ? true : false,
+                  });
+                };
+
+                setPages({pages: paginatedPages});
             });
         } catch (e) {
             console.log(e);
@@ -52,15 +74,37 @@ export default function Blogs({ Title }:IBlogs) {
         getData();
     }, [getData]);
 
-    return (
-        <section className="py-16 border-t-blue border-solid border-t border-opacity-10">
-            <div className="mx-auto container px-7">
-                <div className="flex lg:flex-row flex-col items-center justify-between">
-                    <h2 className="font-poppins text-blue font-medium lg:text-5xl text-3xl tracking-tighter lg:mb-0 mb-6">{Title}</h2>
-                    <Button Label="Bekijk meer" Color="gold" Url="/blog" OpenInNewTab={false}  />
-                </div>
+    const changePage = async (index: number) => {        
+        if (blogs) {
+            await fetch(`${Config.apiUrl}blogs?sort[0]=publishedAt&pagination[page]=${index+1}&pagination[pageSize]=12&populate=deep`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(async (res) => {
+                const data: IBlogs = await res.json();
+                setBlogs(data);
+                
+                const paginatedPages = [];
 
-                <div className="grid grid-cols-3 gap-8 mt-16">
+                for (let i = 0; i < data.meta.pagination.pageCount; i++) {
+                  paginatedPages.push({
+                    page: i+1,
+                    active: index == i ? true : false,
+                  });
+                };
+
+                setPages({pages: paginatedPages});
+                console.log(paginatedPages);
+            });
+        };
+    };
+
+    return (
+        <section className="mb-16">
+            <div className="mx-auto container px-7">
+                <div className="grid grid-cols-3 gap-8 mb-16">
                     {
                         blogs && blogs.data.map((blog: IBlog) => {
                             return (
@@ -87,6 +131,18 @@ export default function Blogs({ Title }:IBlogs) {
                                         </div>
                                     </div>
                                 </Link>
+                            )
+                        })
+                    }
+                </div>
+
+                <div className="flex justify-center items-center gap-2">
+                    {
+                        pages && pages?.pages.map((page: IPaginated, i:number) => {
+                            return (
+                                <span onClick={() => changePage(i)} className={`${page.active ? "bg-gold text-white font-bold" : "text-blue"} lg:text-xl text-base w-8 h-8 flex justify-center items-center rounded-full font-poppins cursor-pointer`}>
+                                    {page.page}
+                                </span>
                             )
                         })
                     }

@@ -1,7 +1,6 @@
 import Head from "next/head";
-import { useCallback, useEffect, useState } from "react";
-import { BlankHero, Main, ServicesOverview } from "../components";
-
+import { useCallback, useEffect, useState } from "react"
+import { BlankHero, BlogOverview, Main } from "../components";
 import Sections, { IContentItem } from "../components/Layout/Sections";
 import { Config } from "../config";
 
@@ -61,7 +60,7 @@ export interface IDataMain {
     }
 };
 
-export interface ISpecialisations {
+export interface IPage {
     data: {
         attributes: {
             Title: string;
@@ -71,73 +70,73 @@ export interface ISpecialisations {
     }
 };
 
-export default function Specialisaties() {
+export default function Blog() {
     const [ loaded, setLoaded ] = useState(false);
     const [ header, setHeader ] = useState<IDataHeader>();
     const [ footer, setFooter ] = useState<IDataFooter>();
     const [ general, setGeneral ] = useState<IDataMain>();
-    const [ page, setPage ] = useState<ISpecialisations>();
-  
+    const [ page, setPage ] = useState<IPage>();
+
     const getData = useCallback(async () => {
-      try {
-        await fetch(`${Config.apiUrl}header?populate=deep`, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json"
-          }
-        })
-        .then(async (res) => {
-            const data = await res.json();
-            setHeader(data);
-        });
-  
-        await fetch(`${Config.apiUrl}main?populate=deep`, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json"
-          }
-        })
-        .then(async (res) => {
-            const data = await res.json();
-            setGeneral(data);
-        });
-  
-        await fetch(`${Config.apiUrl}service-overview?populate=deep`, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json"
-          }
-        })
-        .then(async (res) => {
-            const data = await res.json();
-            setPage(data);
-        });
-  
-        await fetch(`${Config.apiUrl}footer?populate=deep`, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json"
-          }
-        })
-        .then(async (res) => {
-            const data = await res.json();
-            setFooter(data);
-        });
-  
-        setLoaded(true);
-      } catch(e) {
-        console.log(e);
-      };
+        try {
+            await fetch(`${Config.apiUrl}header?populate=deep`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            })
+            .then(async (res) => {
+                const data = await res.json();
+                setHeader(data);
+            });
+
+            await fetch(`${Config.apiUrl}main?populate=deep`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            })
+            .then(async (res) => {
+                const data = await res.json();
+                setGeneral(data);
+            });
+
+            await fetch(`${Config.apiUrl}blog-overview?populate=deep`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            })
+            .then(async (res) => {
+                const data = await res.json();
+                setPage(data);
+            });
+
+            await fetch(`${Config.apiUrl}footer?populate=deep`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            })
+            .then(async (res) => {
+                const data = await res.json();
+                setFooter(data);
+            });
+
+            setLoaded(true);
+        } catch(e) {
+            console.log(e);
+        };
     }, []);
-  
+    
     useEffect(() => {
-      getData();
+    getData();
     }, [getData]);
 
     return loaded ? (
         <>
             <Head>
-                <title>MØVE | Specialisaties</title>
+                <title>MØVE | Blog</title>
                 <meta name="description" content="MØVE Langemark is een jonge praktijk voor kinesitherapie, gevestigd op de Markt te Langemark. Bij MØVE Kinesitherapie kunt u terecht voor revalidatie van letsels aan het bewegingsstelsel." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
@@ -159,7 +158,9 @@ export default function Specialisaties() {
                     Title={page?.data.attributes.Title ?? ""}
                     Text={page?.data.attributes.Text ?? ""}
                 />
-                <ServicesOverview />
+
+                <BlogOverview />
+
                 {
                     general && page?.data.attributes?.Content && (
                         <Sections
@@ -172,3 +173,4 @@ export default function Specialisaties() {
         </>
     ) : ""
 };
+

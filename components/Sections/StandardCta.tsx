@@ -11,11 +11,11 @@ export interface IStandardCta {
 
 export default function StandardCta({Title, Background, Main}:IStandardCta) {
     return (
-        <div className="mx-auto container px-7 my-16">
-            <section className="py-20 px-20 bg-blue-gradient w-full relative">
+        <div className="mx-auto container px-7 lg:my-16 my-8">
+            <section className="lg:py-20 py-10 lg:px-20 px-10 bg-blue-gradient w-full relative">
                 <img src="/logos/logo-white.png" alt="Logo" className="w-36 mb-8" />
 
-                <h2 className="font-poppins text-white max-w-lg leading-[150%] tracking-tighter text-5xl font-medium mb-12">
+                <h2 className="font-poppins text-white max-w-lg leading-[150%] tracking-tighter lg:text-5xl text-3xl font-medium mb-12">
                     {Title}
                 </h2>
 

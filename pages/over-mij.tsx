@@ -145,7 +145,7 @@ export default function About() {
   return loaded ? (
     <>
       <Head>
-        <title>MOVE | Over mij</title>
+        <title>MØVE | Over mij</title>
         <meta name="description" content="MØVE Langemark is een jonge praktijk voor kinesitherapie, gevestigd op de Markt te Langemark. Bij MØVE Kinesitherapie kunt u terecht voor revalidatie van letsels aan het bewegingsstelsel." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

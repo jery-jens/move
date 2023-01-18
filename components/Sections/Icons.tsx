@@ -18,8 +18,8 @@ export interface IIcon {
 
 export default function Icons({Icons}:IIcons) {
     return (
-        <section className="bg-grey pb-32 pt-80 -mt-64 mb-16 relative -z-20">
-            <div className="mx-auto container px-7 flex gap-14">
+        <section className="bg-grey lg:pb-32 pb-16 pt-80 -mt-64 lg:mb-16 mb-8 relative -z-20">
+            <div className="mx-auto container px-7 flex lg:flex-row flex-col gap-14">
                 {
                     Icons && Icons.map((icon:IIcon) => {
                         return (
