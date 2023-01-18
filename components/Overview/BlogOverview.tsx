@@ -108,7 +108,7 @@ export default function BlogOverview() {
                     {
                         blogs && blogs.data.map((blog: IBlog) => {
                             return (
-                                <Link key={blog.id} className="lg:col-span-1 col-span-3 border-solid border border-blue border-opacity-10">
+                                <Link key={blog.id} href={`/blogs/${blog.id}`} className="lg:col-span-1 col-span-3 border-solid border border-blue border-opacity-10">
                                     <div className="relative w-full h-56">
                                         <Image src={`${Config.cmsUrl}${blog.attributes.Thumbnail.data.attributes.url}`} alt="Thumbnail" fill className="object-cover" />
                                     </div>
