@@ -9,9 +9,9 @@ export interface IHero {
 
 export default function Hero({ Title, Text, AppointmentUrl }: IHero) {
     return (
-        <section className="relative lg:pt-80 pt-52 pb-40 border-b-blue border-b-[2px] border-solid border-opacity-20 mb-16 overflow-hidden">
+        <section className="relative lg:pt-80 pt-52 border-b-blue border-b-[2px] border-solid border-opacity-20 mb-16 overflow-hidden">
             <div className="container mx-auto px-7">
-                <div className="lg:ml-[40%] max-w-2xl w-full flex flex-col lg:items-start items-center">
+                <div className="lg:ml-[40%] lg:pb-40 pb-20 max-w-2xl w-full flex flex-col lg:items-start items-center">
                     <h1 className="text-blue font-poppins tracking-tighter font-medium lg:text-6xl lg:text-start text-4xl text-center lg:mb-8 mb-4">
                         {Title}
                     </h1>
@@ -26,6 +26,7 @@ export default function Hero({ Title, Text, AppointmentUrl }: IHero) {
                 </div>
             </div>
 
+            <img src="/images/hero-img.png" alt="Niels" className="lg:absolute left-0 bottom-0 lg:w-[700px] w-full" />
             <img src="/images/hero-blur.png" alt="Blur" className="absolute left-0 bottom-0 -z-10 h-full" />
         </section>
     )

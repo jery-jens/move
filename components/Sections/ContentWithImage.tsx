@@ -11,10 +11,9 @@ export interface IContentWithImage {
     Direction: string;
     Appointment: boolean;
     Main?: IDataMain;
-}
+};
 
 export default function ContentWithImage({ Title, Text, Icon, Image, Direction, Appointment, Main }: IContentWithImage) {
-    console.log(Direction)
     return (
         <section className="lg:py-16 py-8">
             <div className="mx-auto container px-7">

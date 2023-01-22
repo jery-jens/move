@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Config } from "../config";
 import { Hero, Main, Sections } from "../components";
 import { IContentItem } from "../components/Layout/Sections";
+import Loading from "../components/Layout/Loading";
 
 export interface IDataHeader {
   data?: {
@@ -171,5 +172,9 @@ export default function Home() {
         }
       </Main>
     </>
-  ) : ""
+  ) : (
+    <>
+      <Loading />
+    </>
+  )
 }

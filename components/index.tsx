@@ -5,6 +5,7 @@ import Footer from "./Footer";
 // Layout
 import Main from "./Layout/Main";
 import Sections from "./Layout/Sections";
+import Loading from "./Layout/Loading";
 
 // Buttons
 import Button from "./Buttons/Button";
@@ -14,6 +15,7 @@ import ArrowButton from "./Buttons/ArrowButton";
 import Hero from "./Sections/Hero";
 import ImageHero from "./Sections/ImageHero";
 import BlankHero from "./Sections/BlankHero";
+import BlogHero from "./Sections/BlogHero";
 import ContactData from "./Sections/ContactData";
 import ContactMap from "./Sections/ContactMap";
 
@@ -34,5 +36,6 @@ export {
     ServicesOverview,
     ContactData,
     ContactMap,
-    BlogOverview
+    BlogOverview,
+    BlogHero
 };

@@ -7,9 +7,10 @@ export interface IStandardCta {
     Title: string;
     Background: string;
     Main: IDataMain;
+    SrcPublic?: boolean;
 }
 
-export default function StandardCta({Title, Background, Main}:IStandardCta) {
+export default function StandardCta({Title, Background, Main, SrcPublic}:IStandardCta) {
     return (
         <div className="mx-auto container px-7 lg:my-16 my-8">
             <section className="lg:py-20 py-10 lg:px-20 px-10 bg-blue-gradient w-full relative">
@@ -22,7 +23,7 @@ export default function StandardCta({Title, Background, Main}:IStandardCta) {
                 <Button Label="Maak een afspraak" Url={Main.data.attributes.AppointmentURL} OpenInNewTab={true} Color="white" />
 
                 <div className="absolute left-0 top-0 w-full h-full -z-10">
-                    <Image src={`${Config.cmsUrl}${Background}`} alt="Background" fill className="object-cover" />
+                    <Image src={`${SrcPublic ? `${Config.cmsUrl}${Background}` : Background}`} alt="Background" fill className="object-cover" />
                 </div>
             </section>
         </div>

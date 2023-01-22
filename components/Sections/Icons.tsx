@@ -21,9 +21,9 @@ export default function Icons({Icons}:IIcons) {
         <section className="bg-grey lg:pb-32 pb-16 pt-80 -mt-64 lg:mb-16 mb-8 relative -z-20">
             <div className="mx-auto container px-7 flex lg:flex-row flex-col gap-14">
                 {
-                    Icons && Icons.map((icon:IIcon) => {
+                    Icons && Icons.map((icon:IIcon, i:number) => {
                         return (
-                            <div key={icon.Title} className="w-full flex flex-col items-center">
+                            <div key={i} className="w-full flex flex-col items-center">
                                 <div className="bg-blue w-16 h-16 rounded flex justify-center items-center mb-4">
                                     <img src={`${Config.cmsUrl}${icon.Icon.data.attributes.url}`} alt="Icon" className="w-7" />
                                 </div>

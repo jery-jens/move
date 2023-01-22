@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useCallback, useEffect, useState } from "react"
 import { ContactData, ContactMap, Main } from "../components";
+import Loading from "../components/Layout/Loading";
 import { Config } from "../config";
 
 export interface IDataHeader {
@@ -165,6 +166,10 @@ export default function Contact() {
                 <ContactMap />
             </Main>
         </>
-    ) : ""
+    ) : (
+        <>
+            <Loading />
+        </>
+    )
 };
 

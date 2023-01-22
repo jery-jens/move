@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useCallback, useEffect, useState } from "react";
 import { BlankHero, Main, ServicesOverview } from "../components";
+import Loading from "../components/Layout/Loading";
 
 import Sections, { IContentItem } from "../components/Layout/Sections";
 import { Config } from "../config";
@@ -170,5 +171,9 @@ export default function Specialisaties() {
                 }
             </Main>
         </>
-    ) : ""
+    ) : (
+        <>
+            <Loading />
+        </>
+    )
 };
