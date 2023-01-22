@@ -271,7 +271,7 @@ export default function Blog(page: IPage) {
                         </Swiper>
                       </div>
                     ) : (
-                      <div className="mx-auto container px-7">
+                      <div key={item.id} className="mx-auto container px-7">
                         <div className="bg-grey lg:p-14 p-7">
                           <img src="/icons/quote.png" alt="Quote" className="w-12 mb-6" />
                           <h2 className="font-poppins text-blue font-medium lg:text-5xl text-3xl tracking-tighter mb-8">{item.Quote ?? ""}</h2>
