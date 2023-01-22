@@ -262,7 +262,7 @@ export default function Blog(page: IPage) {
                           {
                             item.Images && item.Images.data.map((image: IImages, i: number) => {
                               return (
-                                <SwiperSlide className="!w-[300px] !h-[400px] !relative">
+                                <SwiperSlide key={i} className="!w-[300px] !h-[400px] !relative">
                                   <Image src={`${Config.cmsUrl}${image.attributes.url}`} alt="SwiperImage" className="object-cover" fill />
                                 </SwiperSlide>
                               )
