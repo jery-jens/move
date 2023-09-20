@@ -11,9 +11,11 @@ export interface IContentWithImage {
     Direction: string;
     Appointment: boolean;
     Main?: IDataMain;
+    DownloadLabel?: string;
+    DownloadFile?: string;
 };
 
-export default function ContentWithImage({ Title, Text, Icon, Image, Direction, Appointment, Main }: IContentWithImage) {
+export default function ContentWithImage({ Title, Text, Icon, Image, Direction, Appointment, Main, DownloadFile, DownloadLabel }: IContentWithImage) {
     return (
         <section className="lg:py-16 py-8">
             <div className="mx-auto container px-7">
@@ -40,6 +42,19 @@ export default function ContentWithImage({ Title, Text, Icon, Image, Direction, 
                                         Label="Maak een afspraak"
                                         Color="gold"
                                         Url={Main?.data.attributes.AppointmentURL ?? "/"}
+                                        OpenInNewTab
+                                    />
+                                </div>
+                            )
+                        }
+
+                        {
+                            DownloadFile && (
+                                <div className="mt-10">
+                                    <Button 
+                                        Label={DownloadLabel ?? "Download hier"}
+                                        Color="gold"
+                                        Url={`${Config.cmsUrl}${DownloadFile}`} 
                                         OpenInNewTab
                                     />
                                 </div>

@@ -41,9 +41,18 @@ export interface IContentItem {
         }
     };
     Icons: Array<IIcon>;
+    DownloadLabel?: string;
+    DownloadFile?: {
+        data: [{
+            attributes: {
+                url: string;
+            }
+        }]
+    };
 };
 
 export default function Sections({ Content, Main }:IContent) {
+    console.log(Content)
     return (
         <div className="sections">
             {
@@ -98,6 +107,8 @@ export default function Sections({ Content, Main }:IContent) {
                             Appointment={item.Appointment ?? false}
                             Direction={item.Direction ?? "Image first"}
                             Main={Main}
+                            DownloadFile={item.DownloadFile?.data ? item.DownloadFile?.data[0].attributes.url : ""}
+                            DownloadLabel={item.DownloadLabel ?? ""}
                         />
                     ) : ""
                 })
