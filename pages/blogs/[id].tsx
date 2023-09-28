@@ -211,7 +211,7 @@ export default function Blog(page: IPage) {
 
               <div className="mx-auto container px-7 lg:py-28 py-14">
                 <h2 className="font-poppins text-blue font-semibold tracking-tighter lg:text-4xl text-2xl mb-5">{page.blog.attributes.IntroductionTitle ?? ""}</h2>
-                <ReactMarkdown className="font-openSans text-blue opacity-70 lg:text-xl">
+                <ReactMarkdown className="font-openSans text-blue opacity-70 lg:text-xl rich-text">
                   {page.blog.attributes.IntroductionText ?? ""}
                 </ReactMarkdown>
               </div>
@@ -228,17 +228,17 @@ export default function Blog(page: IPage) {
                                 <h4 className="font-poppins tracking-tighter lg:text-3xl text-2xl text-blue font-semibold mb-4">
                                   {item.Title ?? ""}
                                 </h4>
-                                <ReactMarkdown className="font-openSans text-blue opacity-70 lg:text-base">
+                                <ReactMarkdown className="font-openSans text-blue opacity-70 lg:text-base rich-text">
                                   {item.Text ?? ""}
                                 </ReactMarkdown>
                               </div>
                             )
                           }
                           {
-                            item.Image && (
+                            item.Image?.data && (
                               <div className={`${item.Text ? "lg:col-span-5 col-span-full" : "col-span-12"} lg:mt-0 mt-12`}>
                                 <div className="h-full min-h-[500px] relative w-full">
-                                  <Image src={`${Config.cmsUrl}${item.Image.data.attributes.url}`} alt="Image" fill className="object-cover" />
+                                  <Image src={`${Config.cmsUrl}${item.Image.data.attributes.url ?? ""}`} alt="Image" fill className="object-cover" />
                                 </div>
                               </div>
                             )

@@ -31,7 +31,7 @@ export default function ContentWithImage({ Title, Text, Icon, Image, Direction, 
 
                         <h2 className="font-poppins tracking-tighter font-medium text-blue lg:text-5xl text-3xl !leading-[150%] mb-8">{Title}</h2>
 
-                        <ReactMarkdown className="text-blue font-openSans lg:text-xl text-base">
+                        <ReactMarkdown className="text-blue font-openSans lg:text-xl text-base rich-text">
                             {Text ?? ""}
                         </ReactMarkdown>
 

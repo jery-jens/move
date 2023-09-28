@@ -75,7 +75,7 @@ export default function ContactData({Title, Extra, Main}:IContact) {
                             OpenInNewTab={true}
                         />
 
-                        <ReactMarkdown className="font-openSans text-sm text-blue opacity-60 max-w-lg mt-8">
+                        <ReactMarkdown className="font-openSans text-sm text-blue opacity-60 max-w-lg mt-8 rich-text">
                             {Extra}
                         </ReactMarkdown>
                     </div>

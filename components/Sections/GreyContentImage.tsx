@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Config } from "../../config";
 import { IDataMain } from "../../pages";
 import Button from "../Buttons/Button";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export interface IGreyContentImage {
     Title: string;
@@ -10,9 +11,10 @@ export interface IGreyContentImage {
     Direction: string;
     ImageUrl: string;
     Main: IDataMain;
+    RichText: string;
 };
 
-export default function GreyContentImage({ Title, Text, Appointment, Direction, ImageUrl, Main }: IGreyContentImage) {
+export default function GreyContentImage({ Title, Text, Appointment, Direction, ImageUrl, Main, RichText }: IGreyContentImage) {
     return (
         <section className={`lg:py-16 py-8`}>
             <div className={`mx-auto container lg:gap-0 gap-8 px-7 flex lg:flex-row flex-col items-center ${Direction === "Image first" ? "lg:flex-row-reverse" : "flex-row"}`}>
@@ -20,9 +22,9 @@ export default function GreyContentImage({ Title, Text, Appointment, Direction, 
                     <h2 className="font-poppins text-blue font-medium lg:text-5xl text-3xl tracking-tighter mb-8">
                         {Title}
                     </h2>
-                    <p className="font-openSans text-blue lg:text-xl text-base leading-[150%] mb-12">
-                        {Text}
-                    </p>
+                    <ReactMarkdown className="font-openSans text-blue lg:text-xl text-base leading-[150%] mb-12 rich-text">
+                        {RichText ?? ""}
+                    </ReactMarkdown>
                     {
                         Appointment && <Button Label="Maak een afspraak" Url={Main.data.attributes.AppointmentURL} Color="gold" OpenInNewTab={true} />
                     }

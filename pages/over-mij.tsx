@@ -66,7 +66,7 @@ export interface IAbout {
   data: {
     attributes: {
       Title: string;
-      Text: string;
+      RichText: string;
       Label: string;
       Image: {
         data: {
@@ -166,7 +166,7 @@ export default function About() {
       >
         <ImageHero 
             Label={about?.data.attributes.Label ?? ""}
-            Text={about?.data.attributes.Text ?? ""}
+            RichText={about?.data.attributes.RichText ?? ""}
             Title={about?.data.attributes.Title ?? ""}
             Picture={about?.data.attributes.Image.data.attributes.url ?? ""}
             Main={general}

@@ -19,6 +19,7 @@ export interface IContentItem {
     Text?: string;
     Appointment?: boolean;
     Direction?: string;
+    RichText?: string;
     Image?: {
         data: {
             attributes: {
@@ -66,6 +67,7 @@ export default function Sections({ Content, Main }:IContent) {
                             Direction={item.Direction ?? ""}
                             ImageUrl={item.Image?.data.attributes.url ?? ""}
                             Main={Main}
+                            RichText={item.RichText ?? ""}
                         />
                     ) : item.__component == "sections.advanced-cta" ? (
                         <AdvancedCta 

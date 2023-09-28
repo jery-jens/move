@@ -11,3 +11,34 @@
 .swiper-pagination-bullet-active {
     background-color: #8C7756 !important;
 }
+
+.rich-text p {
+    @apply mb-4;
+}
+
+.rich-text p:last-of-type {
+    @apply mb-0;
+}
+
+.cookie-though {
+    /* The colors used to style the modal */
+    --ct-primary-400: #8C7756;
+    --ct-primary-300: #293440;
+    --ct-primary-200: #c1c1c1;
+    --ct-primary-100: #e1e1e1;
+  
+    /* The colors used to style: customizationButton, headerDescription and cookiePolicy */
+    --ct-text: #6b7280;
+  
+    /* The colors used to style the sliders */
+    --ct-slider-secondary: #FFF3E1;
+    --ct-slider-primary: #8C7756;
+    --ct-slider-enabled-primary: #FFF3E1;
+    --ct-slider-enabled-secondary: rgb(255, 255, 255);
+
+    /* The font and font weight used in the app */
+    --ct-primary-font: 'Poppins';
+  
+    /* The font and font weight used for header description and policy description */
+    --ct-secondary-font: 'Poppins';
+  }
