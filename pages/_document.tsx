@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-0HM029M8L3"></Script>
-      <Script>{`window.dataLayer = window.dataLayer || [];
+      <Script id='ga'>{`window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
