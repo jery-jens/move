@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
+import ReactMarkdown from "react-markdown";
 
 import { Config } from "../../config";
 import Button from "../Buttons/Button";
@@ -18,6 +19,7 @@ export interface IService {
     attributes: {
         Title: string;
         Text: string;
+        RichText: string;
         Background: {
             data: {
                 attributes: {
@@ -89,7 +91,11 @@ export default function Services({ Title, Text }: IServices) {
                                         >
                                             <div className="w-full lg:p-14 p-10 h-[600px] bg-blue bg-opacity-90 relative">
                                                 <h4 className="font-poppins tracking-tighter text-white font-medium lg:text-4xl text-2xl !leading-[130%] mb-4">{service.attributes.Title}</h4>
-                                                <p className="font-openSans text-base text-white">{service.attributes.Text}</p>
+
+                                                <ReactMarkdown className="font-openSans text-base text-white rich-text">
+                                                    {service.attributes.Text}
+                                                </ReactMarkdown>
+
                                                 <img src={`${Config.cmsUrl}${service.attributes.Background.data.attributes.url}`} alt="Image" className="absolute left-0 top-0 w-full h-full object-cover -z-10" />
                                             </div>
                                         </SwiperSlide>

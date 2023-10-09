@@ -14,7 +14,7 @@ export interface IImageHero {
     Main?: IDataMain;
 };
 
-export default function ImageHero({Label, Title, Picture, Main, RichText}:IImageHero) {
+export default function ImageHero({Label, Title, Picture, Main, RichText}: IImageHero) {
     return (
         <section className="bg-grey lg:pt-64 pt-44 lg:pb-24 pb-0 lg:mb-36 mb-16">
             <div className="mx-auto container px-7 relative">

@@ -25,17 +25,33 @@ export interface INavLink {
 export default function Header({logo, navigation}: IHeader) {
     const [ currentPath, setCurrentPath ] = useState("/");
     const [ showMenu, setShowMenu ] = useState(false);
+    const [ isHome, setIsHome ] = useState(false);
 
     useEffect(() => {
         const path = window.location.pathname;
         setCurrentPath(path);
+        
+        if (path === "/") {
+            setIsHome(true);
+        };
     });
 
     return (
         <header className="absolute top-0 left-0 py-10 w-full z-50">
             <div className="container mx-auto px-7 flex items-center justify-between w-full">
                 <Link href="/" className="relative z-[101]">
-                    <img src={`${Config.cmsUrl}${logo}`} alt="logo" className="lg:w-36 w-28" />
+                    {
+                        isHome ? (
+                            <>
+                                <img src="/logos/logo-white.png" alt="Logo" className="lg:w-36 w-28 hidden lg:block" />
+                                <img src={`${Config.cmsUrl}${logo}`} alt="Logo" className="lg:w-36 w-28 block lg:hidden" />
+                            </>
+                        ) : (
+                            <>
+                                <img src={`${Config.cmsUrl}${logo}`} alt="Logo" className="lg:w-36 w-28" />
+                            </>
+                        )
+                    }
                 </Link>
 
                 <div className="lg:flex hidden items-center gap-12">

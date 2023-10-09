@@ -53,7 +53,6 @@ export interface IContentItem {
 };
 
 export default function Sections({ Content, Main }:IContent) {
-    console.log(Content)
     return (
         <div className="sections">
             {
