@@ -48,10 +48,10 @@ export default function ContactData({Title, Extra, Main}:IContact) {
                         <div className="flex flex-col gap-3 mb-6">
                             <div className="flex items-center gap-3 lg:text-xl text-base font-openSans text-blue">
                                 <div className="w-8 h-8 flex items-center">
-                                    <img src="/icons/map.png" alt="Map" className="w-5" />
+                                    <img src="/icons/mail.png" alt="Mail" className="w-7" />
                                 </div>
 
-                                {Main.data.attributes.Address ?? ""}
+                                {Main.data.attributes.Phone ?? ""}
                             </div>
                             <div className="flex items-center gap-3 lg:text-xl text-base font-openSans text-blue">
                                 <div className="w-8 h-8 flex items-center">
@@ -62,10 +62,10 @@ export default function ContactData({Title, Extra, Main}:IContact) {
                             </div>
                             <div className="flex items-center gap-3 lg:text-xl text-base font-openSans text-blue">
                                 <div className="w-8 h-8 flex items-center">
-                                    <img src="/icons/mail.png" alt="Mail" className="w-7" />
+                                    <img src="/icons/map.png" alt="Map" className="w-5" />
                                 </div>
 
-                                {Main.data.attributes.Phone ?? ""}
+                                {Main.data.attributes.Address ?? ""}
                             </div>
                         </div>
 
