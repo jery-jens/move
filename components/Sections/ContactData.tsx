@@ -48,14 +48,14 @@ export default function ContactData({Title, Extra, Main}:IContact) {
                         <div className="flex flex-col gap-3 mb-6">
                             <div className="flex items-center gap-3 lg:text-xl text-base font-openSans text-blue">
                                 <div className="w-8 h-8 flex items-center">
-                                    <img src="/icons/mail.png" alt="Mail" className="w-7" />
+                                <img src="/icons/phone.png" alt="Phone" className="w-6" />
                                 </div>
 
                                 {Main.data.attributes.Phone ?? ""}
                             </div>
                             <div className="flex items-center gap-3 lg:text-xl text-base font-openSans text-blue">
                                 <div className="w-8 h-8 flex items-center">
-                                    <img src="/icons/phone.png" alt="Phone" className="w-6" />
+                                    <img src="/icons/mail.png" alt="Mail" className="w-7" />
                                 </div>
 
                                 {Main.data.attributes.Email ?? ""}
