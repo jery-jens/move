@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useCallback, useEffect, useState } from "react";
 
 import { Config } from "../config";
-import { Hero, Main, Sections } from "../components";
+import { ImageHero, Main, Sections } from "../components";
 import { IContentItem } from "../components/Layout/Sections";
 import Loading from "../components/Layout/Loading";
 
@@ -62,30 +62,30 @@ export interface IDataMain {
   }
 };
 
-export interface IHome {
+export interface IAbout {
   data: {
     attributes: {
       Title: string;
-      Text: string;
-      Content: Array<IContentItem>;
-      Picture: {
+      RichText: string;
+      Label: string;
+      Image: {
         data: {
-          attributes: {
-            name: string;
-            url: string;
-          }
+            attributes: {
+                url: string;
+            }
         }
-      },
+      }
+      Content: Array<IContentItem>;
     }
   }
 };
 
-export default function Home() {
+export default function About() {
   const [ loaded, setLoaded ] = useState(false);
   const [ header, setHeader ] = useState<IDataHeader>();
   const [ footer, setFooter ] = useState<IDataFooter>();
   const [ general, setGeneral ] = useState<IDataMain>();
-  const [ home, setHome ] = useState<IHome>();
+  const [ about, setAbout ] = useState<IAbout>();
 
   const getData = useCallback(async () => {
     try {
@@ -111,7 +111,7 @@ export default function Home() {
           setGeneral(data);
       });
 
-      await fetch(`${Config.apiUrl}home?populate=deep`, {
+      await fetch(`${Config.apiUrl}about?populate=deep`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -119,7 +119,7 @@ export default function Home() {
       })
       .then(async (res) => {
           const data = await res.json();
-          setHome(data);
+          setAbout(data);
       });
 
       await fetch(`${Config.apiUrl}footer?populate=deep`, {
@@ -146,7 +146,7 @@ export default function Home() {
   return loaded ? (
     <>
       <Head>
-        <title>MØVE | Home</title>
+        <title>MØVE | Over mij</title>
         <meta name="description" content="MØVE Langemark is een jonge praktijk voor kinesitherapie, gevestigd op de Markt te Langemark. Bij MØVE Kinesitherapie kunt u terecht voor revalidatie van letsels aan het bewegingsstelsel." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -164,18 +164,18 @@ export default function Home() {
           Links: footer?.data?.attributes.Links,
         }}
       >
-        <Hero 
-          Title={home?.data.attributes.Title ?? ""}
-          Text={home?.data.attributes.Text ?? ""}
-          AppointmentUrl={general?.data.attributes.AppointmentURL ?? "/"}
-          Picture={home?.data.attributes.Picture.data.attributes.url ?? ""}
+        <ImageHero 
+            Label={about?.data.attributes.Label ?? ""}
+            RichText={about?.data.attributes.RichText ?? ""}
+            Title={about?.data.attributes.Title ?? ""}
+            Picture={about?.data.attributes.Image.data.attributes.url ?? ""}
+            Main={general}
         />
-
         {
-          general && home?.data.attributes?.Content && (
+          general && about?.data.attributes?.Content && (
             <Sections
               Main={general} 
-              Content={home?.data.attributes?.Content}
+              Content={about?.data.attributes?.Content}
             />
           )
         }

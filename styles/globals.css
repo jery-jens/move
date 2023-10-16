@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-pagination {
+    bottom: -35px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #8C7756 !important;
+}
+
+.rich-text p {
+    @apply mb-4;
+}
+
+.rich-text p:last-of-type {
+    @apply mb-0;
+}
+
+.cookie-though {
+    /* The colors used to style the modal */
+    --ct-primary-400: #8C7756;
+    --ct-primary-300: #293440;
+    --ct-primary-200: #c1c1c1;
+    --ct-primary-100: #e1e1e1;
+  
+    /* The colors used to style: customizationButton, headerDescription and cookiePolicy */
+    --ct-text: #6b7280;
+  
+    /* The colors used to style the sliders */
+    --ct-slider-secondary: #FFF3E1;
+    --ct-slider-primary: #8C7756;
+    --ct-slider-enabled-primary: #FFF3E1;
+    --ct-slider-enabled-secondary: rgb(255, 255, 255);
+
+    /* The font and font weight used in the app */
+    --ct-primary-font: 'Poppins';
+  
+    /* The font and font weight used for header description and policy description */
+    --ct-secondary-font: 'Poppins';
+  }
