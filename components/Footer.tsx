@@ -52,10 +52,10 @@ export default function Footer({Address, Phone, Email, Facebook, Instagram, Open
                     <h4 className="font-poppins font-semibold uppercase tracking-wider lg:text-xl text-base mb-3">Socials</h4>
 
                     <div className="flex items-center gap-3">
-                        <Link href={Instagram ?? "/"}>
+                        <Link href={"https://www.instagram.com/move_langemark/"}>
                             <img src="/icons/instagram.png" alt="Instagram" className="w-7" />
                         </Link>
-                        <Link href={Facebook ?? "/"}>
+                        <Link href={"https://www.facebook.com/MOVELangemark"}>
                             <img src="/icons/facebook.png" alt="Facebook" className="w-7" />
                         </Link>
                     </div>
