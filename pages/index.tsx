@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useCallback, useEffect, useState } from "react";
 
 import { Config } from "../config";
-import { Hero, Main, Sections } from "../components";
+import { Hero, Main, Sections, Announcement } from "../components";
 import { IContentItem } from "../components/Layout/Sections";
 import Loading from "../components/Layout/Loading";
 
@@ -145,6 +145,7 @@ export default function Home() {
 
   return loaded ? (
     <>
+      <Announcement />
       <Head>
         <title>MØVE | Home</title>
         <meta name="description" content="MØVE Langemark is een jonge praktijk voor kinesitherapie, gevestigd op de Markt te Langemark. Bij MØVE Kinesitherapie kunt u terecht voor revalidatie van letsels aan het bewegingsstelsel." />

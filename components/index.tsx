@@ -1,6 +1,7 @@
 // General
 import Header from "./Header";
 import Footer from "./Footer";
+import Announcement from "./Announcement";
 
 // Layout
 import Main from "./Layout/Main";
@@ -10,6 +11,9 @@ import Loading from "./Layout/Loading";
 // Buttons
 import Button from "./Buttons/Button";
 import ArrowButton from "./Buttons/ArrowButton";
+
+// Icons
+import InfoIcon, { InfoIconMap, ClipboardIcon, BagIcon, MedicalIcon, CheckIcon, StarIcon, ChartIcon, CalendarIcon, TargetIcon } from "./Icons/InfoIcons";
 
 // Sections
 import Hero from "./Sections/Hero";
@@ -37,5 +41,17 @@ export {
     ContactData,
     ContactMap,
     BlogOverview,
-    BlogHero
+    BlogHero,
+    Announcement,
+    // Icons
+    InfoIcon,
+    InfoIconMap,
+    ClipboardIcon,
+    BagIcon,
+    MedicalIcon,
+    CheckIcon,
+    StarIcon,
+    ChartIcon,
+    CalendarIcon,
+    TargetIcon
 };

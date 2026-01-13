@@ -6,6 +6,7 @@ import Button from "./Buttons/Button";
 export interface IHeader {
     logo?: string;
     navigation?: Array<INavLink>;
+    darkBackground?: boolean;
 };
 
 export interface INavLink {
@@ -22,7 +23,7 @@ export interface INavLink {
     };
 };
 
-export default function Header({logo, navigation}: IHeader) {
+export default function Header({logo, navigation, darkBackground}: IHeader) {
     const [ currentPath, setCurrentPath ] = useState("/");
     const [ showMenu, setShowMenu ] = useState(false);
     const [ isHome, setIsHome ] = useState(false);
@@ -30,26 +31,23 @@ export default function Header({logo, navigation}: IHeader) {
     useEffect(() => {
         const path = window.location.pathname;
         setCurrentPath(path);
-        
+
         if (path === "/") {
             setIsHome(true);
         };
     });
+
+    const useDarkStyle = darkBackground;
 
     return (
         <header className="absolute top-0 left-0 py-10 w-full z-50">
             <div className="container mx-auto px-7 flex items-center justify-between w-full">
                 <Link href="/" className="relative z-[101]">
                     {
-                        isHome ? (
-                            <>
-                                <img src="/logos/logo-white.png" alt="Logo" className="lg:w-36 w-28 hidden lg:block" />
-                                <img src={`${Config.cmsUrl}${logo}`} alt="Logo" className="lg:w-36 w-28 block lg:hidden" />
-                            </>
+                        (useDarkStyle || isHome) ? (
+                            <img src="/logos/logo-white.png" alt="Logo" className="lg:w-36 w-28" />
                         ) : (
-                            <>
-                                <img src={`${Config.cmsUrl}${logo}`} alt="Logo" className="lg:w-36 w-28" />
-                            </>
+                            <img src={`${Config.cmsUrl}${logo}`} alt="Logo" className="lg:w-36 w-28" />
                         )
                     }
                 </Link>
@@ -58,17 +56,17 @@ export default function Header({logo, navigation}: IHeader) {
                     {
                         navigation && navigation.map((item: INavLink) => {
                             return !item.Color ? (
-                                <Link key={item.Label} href={item.Link} target={item.OpenInNewTab ? "_blank" : "_self"} className={`font-poppins ${currentPath === item.Link ? "font-bold opacity-50" : "font-medium"} text-md text-blue ease-in-out transition-all duration-200 hover:opacity-70`}>
+                                <Link key={item.Label} href={item.Link} target={item.OpenInNewTab ? "_blank" : "_self"} className={`font-poppins ${currentPath === item.Link ? "font-bold opacity-50" : "font-medium"} text-md ${useDarkStyle ? "text-white" : "text-blue"} ease-in-out transition-all duration-200 hover:opacity-70`}>
                                     {item.Label}
                                 </Link>
                             ) : (
-                                <Button 
+                                <Button
                                     key={item.Label}
-                                    Label={item.Label} 
+                                    Label={item.Label}
                                     Url={item.Link}
                                     Icon={item.Icon?.data.attributes.url}
                                     OpenInNewTab={item.OpenInNewTab}
-                                    Color={item.Color}
+                                    Color={useDarkStyle ? "gold" : item.Color}
                                 />
                             )
                         })

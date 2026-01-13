@@ -5,11 +5,12 @@ export interface IMain {
     header: IHeader;
     footer: IFooter;
     children: any;
+    darkBackground?: boolean;
 };
 
 import { init } from 'cookie-though'
 
-export default function Main({header, footer, children}: IMain) {
+export default function Main({header, footer, children, darkBackground}: IMain) {
     init({
         "policies": [
           {
@@ -57,7 +58,7 @@ export default function Main({header, footer, children}: IMain) {
       })
     return (
         <main className="min-h-screen">
-            <Header logo={header.logo} navigation={header.navigation} />
+            <Header logo={header.logo} navigation={header.navigation} darkBackground={darkBackground} />
 
             {children}
 
