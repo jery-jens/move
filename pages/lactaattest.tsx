@@ -606,7 +606,7 @@ export default function Lactaattest() {
                                         </div>
                                     </div>
                                     <p className="text-blue text-opacity-70 font-openSans text-base leading-relaxed">
-                                        "{testimonial.quote}"
+                                        &ldquo;{testimonial.quote}&rdquo;
                                     </p>
                                 </div>
                             ))}
