@@ -542,7 +542,7 @@ export default function Lactaattest() {
                                         </span>
                                     </div>
 
-                                    <ul className="space-y-4 mb-8 flex-grow">
+                                    <ul className="space-y-4 flex-grow">
                                         {plan.features.map((feature: IPricingFeature, featureIdx: number) => (
                                             <li key={featureIdx} className="flex items-start gap-3">
                                                 <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
@@ -574,15 +574,17 @@ export default function Lactaattest() {
                                             </li>
                                         ))}
                                     </ul>
-
-                                    <Button
-                                        Label="Meer informatie"
-                                        Url="/contact"
-                                        Color={plan.featured ? "gold" : "blue"}
-                                        OpenInNewTab={false}
-                                    />
                                 </div>
                             ))}
+                        </div>
+
+                        <div className="text-center mt-12">
+                            <Button
+                                Label="Meer informatie"
+                                Url="/contact"
+                                Color="gold"
+                                OpenInNewTab={false}
+                            />
                         </div>
                     </div>
                 </section>
