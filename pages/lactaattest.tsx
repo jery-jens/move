@@ -148,6 +148,7 @@ interface ILactaattestPage {
         attributes: {
             HeroTitle?: string;
             HeroSubtitle?: string;
+            HeroImage?: { data?: { attributes: { url: string } } };
             PrimaryButtonLabel?: string;
             PrimaryButtonUrl?: string;
             SecondaryButtonLabel?: string;
@@ -281,9 +282,14 @@ export default function Lactaattest() {
     // Build data with CMS fallback to defaults
     const attrs = pageData?.data?.attributes;
 
+    const heroImage = attrs?.HeroImage?.data?.attributes?.url
+        ? `${Config.cmsUrl}${attrs.HeroImage.data.attributes.url}`
+        : null;
+
     const heroData = {
         title: attrs?.HeroTitle || defaultHeroData.title,
         subtitle: attrs?.HeroSubtitle || defaultHeroData.subtitle,
+        image: heroImage,
         primaryButton: {
             label: attrs?.PrimaryButtonLabel || defaultHeroData.primaryButton.label,
             url: attrs?.PrimaryButtonUrl || defaultHeroData.primaryButton.url
@@ -364,13 +370,18 @@ export default function Lactaattest() {
                 darkBackground={true}
             >
                 {/* Hero Section */}
-                <section className="bg-blue relative overflow-hidden">
-                    <div className="container mx-auto px-7 lg:pt-48 pt-36 lg:pb-32 pb-20">
+                <section className="relative overflow-hidden">
+                    {/* Background image with blur */}
+                    {heroData.image && (
+                        <div className="absolute inset-0 bg-cover bg-center scale-110" style={{ backgroundImage: `url('${heroData.image}')` }} />
+                    )}
+                    <div className={`absolute inset-0 ${heroData.image ? 'backdrop-blur-sm bg-blue/60' : 'bg-blue'}`} />
+                    <div className="container mx-auto px-7 lg:pt-48 pt-36 lg:pb-32 pb-20 relative z-10">
                         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
                             <h1 className="text-white font-poppins tracking-tighter font-medium lg:text-6xl text-4xl lg:mb-6 mb-4">
                                 {heroData.title}
                             </h1>
-                            <p className="text-white text-opacity-80 font-openSans lg:text-xl text-lg leading-[150%] mb-8">
+                            <p className="text-white text-opacity-90 font-openSans lg:text-xl text-lg leading-[150%] mb-8">
                                 {heroData.subtitle}
                             </p>
                             <div className="flex flex-wrap gap-4 justify-center">
@@ -389,8 +400,6 @@ export default function Lactaattest() {
                             </div>
                         </div>
                     </div>
-                    {/* Decorative bottom curve or image could go here */}
-                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </section>
 
                 {/* Practical Info Section */}
