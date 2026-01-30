@@ -17,8 +17,10 @@ export default function BlogHero({Title, Tag, AuthorAvatar, AuthorName, Date, Th
     return (
         <div className="mx-auto container px-7 lg:mt-44 mt-32">
             <section className="bg-blog-gradient h-[500px] overflow-hidden relative w-full lg:px-11 px-6 py-6 flex flex-col justify-end">
-                <h4 className="font-poppins text-white lg:text-3xl text-xl opacity-60 tracking-tighter uppercase">#{Tag}</h4>
-                <h1 className="font-poppins text-white lg:text-6xl text-3xl tracking-tighter font-medium lg:mt-4">{Title}</h1>
+                {Tag && (
+                    <h4 className="font-poppins text-white lg:text-3xl text-xl opacity-60 tracking-tighter uppercase">#{Tag}</h4>
+                )}
+                <h1 className={`font-poppins text-white lg:text-6xl text-3xl tracking-tighter font-medium ${Tag ? 'lg:mt-4' : ''}`}>{Title}</h1>
 
                 <div className="flex lg:flex-row flex-col justify-between lg:items-center gap-6 mt-8">
                     <div className="flex items-center gap-3">
