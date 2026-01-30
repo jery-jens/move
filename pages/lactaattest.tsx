@@ -456,9 +456,10 @@ export default function Lactaattest() {
                                                 {section.title}
                                             </h3>
                                             {section.text && (
-                                                <p className="text-blue text-opacity-70 font-openSans text-base mb-2">
-                                                    {section.text}
-                                                </p>
+                                                <div
+                                                    className="text-blue text-opacity-70 font-openSans text-base mb-2"
+                                                    dangerouslySetInnerHTML={{ __html: section.text }}
+                                                />
                                             )}
                                             {section.items && (
                                                 <ul className="space-y-1">
