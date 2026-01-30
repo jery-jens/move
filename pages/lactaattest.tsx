@@ -159,6 +159,9 @@ interface ILactaattestPage {
                 Icon?: { data?: { attributes: { url: string } } };
                 Title: string;
                 Description?: string;
+                BulletPoints?: string[];
+                SubBulletPoints?: string[];
+                FooterText?: string;
             }>;
             InfoImages?: { data?: Array<{ attributes: { url: string } }> };
             PricingTitle?: string;
@@ -188,7 +191,8 @@ interface ILactaattestPage {
 }
 
 interface IPracticalSection {
-    icon: string;
+    icon?: string;
+    iconUrl?: string;
     title: string;
     text?: string;
     items?: string[];
@@ -300,10 +304,21 @@ export default function Lactaattest() {
         }
     };
 
+    const cmsInfoSections = attrs?.InfoItems && attrs.InfoItems.length > 0
+        ? attrs.InfoItems.map(item => ({
+            iconUrl: item.Icon?.data?.attributes?.url ? `${Config.cmsUrl}${item.Icon.data.attributes.url}` : undefined,
+            title: item.Title,
+            text: item.Description || undefined,
+            items: item.BulletPoints || undefined,
+            subItems: item.SubBulletPoints || undefined,
+            footer: item.FooterText || undefined
+        }))
+        : null;
+
     const practicalInfoData = {
         title: attrs?.InfoTitle || defaultPracticalInfoData.title,
         subtitle: attrs?.InfoSubtitle || defaultPracticalInfoData.subtitle,
-        sections: defaultPracticalInfoData.sections, // Keep using default sections for now (complex structure)
+        sections: cmsInfoSections || defaultPracticalInfoData.sections,
         images: attrs?.InfoImages?.data?.map(img => `${Config.cmsUrl}${img.attributes.url}`) || defaultPracticalInfoData.images
     };
 
@@ -419,18 +434,22 @@ export default function Lactaattest() {
                             <div className="lg:w-1/2 space-y-8">
                                 {practicalInfoData.sections.map((section: IPracticalSection, idx: number) => (
                                     <div key={idx} className="flex gap-4">
-                                        <div className="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
-                                            <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                {section.icon === "clipboard" && (
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                                )}
-                                                {section.icon === "bag" && (
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                                )}
-                                                {section.icon === "medical" && (
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                                )}
-                                            </svg>
+                                        <div className="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm overflow-hidden">
+                                            {section.iconUrl ? (
+                                                <img src={section.iconUrl} alt="" className="w-5 h-5 object-contain" />
+                                            ) : (
+                                                <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    {section.icon === "clipboard" && (
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                                    )}
+                                                    {section.icon === "bag" && (
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                                    )}
+                                                    {section.icon === "medical" && (
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                    )}
+                                                </svg>
+                                            )}
                                         </div>
                                         <div>
                                             <h3 className="text-blue font-poppins font-medium text-lg mb-2">
