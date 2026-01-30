@@ -70,11 +70,13 @@ export default function Blogs({ Title }:IBlogs) {
                                     </div>
 
                                     <div className="lg:px-8 px-4 py-6">
-                                        <span className="font-poppins text-blue opacity-60 uppercase font-medium text-xl">
-                                            #{blog.attributes.Tag}
-                                        </span>
+                                        {blog.attributes.Tag && (
+                                            <span className="font-poppins text-blue opacity-60 uppercase font-medium text-xl">
+                                                #{blog.attributes.Tag}
+                                            </span>
+                                        )}
 
-                                        <h4 className="font-poppins text-blue font-medium text-2xl tracking-tighter mt-2 mb-4">
+                                        <h4 className={`font-poppins text-blue font-medium text-2xl tracking-tighter ${blog.attributes.Tag ? 'mt-2' : ''} mb-4`}>
                                             {blog.attributes.Title}
                                         </h4>
 
