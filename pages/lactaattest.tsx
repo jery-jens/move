@@ -190,6 +190,29 @@ interface ILactaattestPage {
     };
 }
 
+function formatDescriptionHtml(text: string): string {
+    // If the text contains bullet characters, split and render as a list
+    if (text.includes('•')) {
+        const parts = text.split('•').map(s => s.trim()).filter(Boolean);
+        // Check if there's a prefix before the first bullet
+        const fullText = text.trim();
+        const firstBulletIndex = fullText.indexOf('•');
+        const prefix = fullText.substring(0, firstBulletIndex).trim();
+
+        let html = '';
+        if (prefix) {
+            html += `<p>${prefix}</p>`;
+        }
+        html += '<ul style="list-style-type: disc; padding-left: 1.25rem; margin-top: 0.25rem;">';
+        parts.forEach(item => {
+            html += `<li style="margin-bottom: 0.25rem;">${item}</li>`;
+        });
+        html += '</ul>';
+        return html;
+    }
+    return text;
+}
+
 interface IPracticalSection {
     icon?: string;
     iconUrl?: string;
@@ -458,7 +481,7 @@ export default function Lactaattest() {
                                             {section.text && (
                                                 <div
                                                     className="text-blue text-opacity-70 font-openSans text-base mb-2"
-                                                    dangerouslySetInnerHTML={{ __html: section.text }}
+                                                    dangerouslySetInnerHTML={{ __html: formatDescriptionHtml(section.text) }}
                                                 />
                                             )}
                                             {section.items && (
@@ -598,13 +621,21 @@ export default function Lactaattest() {
                             ))}
                         </div>
 
-                        <div className="text-center mt-12">
+                        <div className="text-center mt-12 flex flex-wrap gap-4 justify-center">
                             <Button
                                 Label="Meer informatie"
                                 Url="/contact"
                                 Color="gold"
                                 OpenInNewTab={false}
                             />
+                            {general?.data?.attributes?.AppointmentURL && (
+                                <Button
+                                    Label="Maak een afspraak"
+                                    Url={general.data.attributes.AppointmentURL}
+                                    Color="blue"
+                                    OpenInNewTab={true}
+                                />
+                            )}
                         </div>
                     </div>
                 </section>
