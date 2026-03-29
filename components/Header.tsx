@@ -37,14 +37,14 @@ export default function Header({logo, navigation, darkBackground}: IHeader) {
         };
     });
 
-    const useDarkStyle = darkBackground;
+    const useDarkStyle = darkBackground && !isHome;
 
     return (
-        <header className="absolute top-0 left-0 py-10 w-full z-50">
+        <header className={`absolute top-0 left-0 py-10 w-full z-50 ${isHome ? "bg-white border-b-blue border-b-[2px] border-solid border-opacity-20" : ""}`}>
             <div className="container mx-auto px-7 flex items-center justify-between w-full">
                 <Link href="/" className="relative z-[101]">
                     {
-                        (useDarkStyle || isHome) ? (
+                        useDarkStyle ? (
                             <img src="/logos/logo-white.png" alt="Logo" className="lg:w-36 w-28" />
                         ) : (
                             <img src={`${Config.cmsUrl}${logo}`} alt="Logo" className="lg:w-36 w-28" />
